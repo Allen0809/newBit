@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/cn/tedu/ttms/product/dao/ProjectDao.java=gbk
+encoding//src/main/java/cn/tedu/ttms/product/entity=UTF-8
+encoding//src/main/java/cn/tedu/ttms/product/service=gbk
+encoding//src/main/java/cn/tedu/ttms/product/service/ProjectService.java=UTF-8
+encoding//src/test/java/beans/product/TestProjectService.java=gbk

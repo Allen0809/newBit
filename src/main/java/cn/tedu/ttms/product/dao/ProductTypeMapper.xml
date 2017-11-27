@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.ttms.product.dao.ProductTypeDao">
+	<select id="findTreeGridNodes" resultType="map">
+		select c.*,p.name parentName from tms_classes c left 
+		join tms_classes p on c.parentId=p.id
+	</select>
+	
+	<!-- <select id="findTreeGridNodes1">
+		select c.id,c.name,c.parentId,
+		(select p.name from tms_classes p where c.parentId=p.id)
+		 from tms_classes c
+	</select> -->
+	
+	<select id="hasChilds" resultType="int">
+		select count(*) from tms_classes where parentId=#{id}
+	</select>
+	
+	<delete id="deleteById">
+		delete from tms_classes where id=#{id}
+	</delete>
+	
+	<!-- 在这里可以将node对象理解为一个vo(value object) 对象 
+			可以实体类封装数据？
+			可以使用map封装数据吗？-->
+	<select id="findZtreeNodes" resultType="cn.tedu.ttms.common.vo.Node">
+			select id,name,parentId from tms_classes	
+	</select>
+	
+	
+	<insert id="insertObject" parameterType="productType">
+		insert into tms_classes 
+		(name,parentId,sort,note,createdTime,modifiedTime,createdUser,modifiedUser)
+		 values 
+		(#{name},#{parentId},#{sort},#{note},now(),now(),#{createdUser},#{modifiedUser})
+	</insert>
+	
+	
+</mapper>
+
